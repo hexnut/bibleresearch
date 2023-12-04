@@ -39,6 +39,6 @@ r = 0
 for line in sys.stdin:
     n = int(line)
     r = eval(f)
-    print(n,r)
+    print("%3d:%5d" % (n,r)) 
 
 exit()

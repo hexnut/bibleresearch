@@ -3,7 +3,7 @@
 import sys
 from math import pow
 
-def narcissist(num,loopcnt=7):
+def narcissist(num,loopcnt=12):
 
     tl = []
     ts = list(str(num))
@@ -19,7 +19,7 @@ def narcissist(num,loopcnt=7):
 
 for line in sys.stdin:
     n = int(line)
-    r = narcissist(n,12)
+    r = narcissist(n,15)
     print(n,r)
 
 exit()

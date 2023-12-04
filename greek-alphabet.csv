@@ -1,25 +1,25 @@
 GREEK CHARACTER SET
-ALPHA    1     Α α
-BETA     2     Β β
-GAMMA    3     Γ γ
-DELTA    4     Δ δ
-EPSILON  5     Ε ε
-ZETA     7     Ζ ζ
-ETA      8     Η η
-THETA    9     Θ θ
-IOTA     10    Ι ι
-KAPPA    20    Κ κ
-LAMBDA   30    Λ λ
-MU       40    Μ μ
-NU       50    Ν ν
-XI       60    Ξ ξ
-OMICRON  70    Ο ο
-PI       80    Π π
-RHO      100   Ρ ρ
-SIGMA    200   Σ σ
-TAU      300   Τ τ
-UPSILON  400   Υ υ
-PHI      500   Φ φ
-CHI      600   Χ χ
-PSI      700   Ψ ψ
-OMEGA    800   Ω ω
+ALPHA      1     Ά Α ά α ἀ ἁ ἂ ἃ ἄ ἅ ἆ ἇ Ἀ Ἁ Ἂ Ἃ Ἄ Ἅ Ἆ Ἇ ὰ ά ᾀ ᾁ ᾂ ᾃ ᾄ ᾅ ᾆ ᾇ ᾈ ᾉ ᾊ ᾋ ᾌ ᾍ ᾎ ᾏ ᾰ ᾱ ᾲ ᾳ ᾴ ᾶ ᾷ Ᾰ Ᾱ Ὰ Ά ᾼ 
+BETA       2     Β β 
+GAMMA      3     Γ γ 
+DELTA      4     Δ δ 
+EPSILON    5     Έ Ε έ ε ἐ ἑ ἒ ἓ ἔ ἕ Ἐ Ἑ Ἒ Ἓ Ἔ Ἕ ὲ έ Ὲ Έ 
+ZETA       7     Ζ ζ 
+ETA        8     Ή Η ή η ἠ ἡ ἢ ἣ ἤ ἥ ἦ ἧ Ἠ Ἡ Ἢ Ἣ Ἤ Ἥ Ἦ Ἧ ὴ ή ᾐ ᾑ ᾒ ᾓ ᾔ ᾕ ᾖ ᾗ ᾘ ᾙ ᾚ ᾛ ᾜ ᾝ ᾞ ᾟ ῂ ῃ ῄ ῆ ῇ Ὴ Ή ῌ 
+THETA      9     Θ θ 
+IOTA       10    Ί ΐ Ι Ϊ ί ι ϊ ἰ ἱ ἲ ἳ ἴ ἵ ἶ ἷ Ἰ Ἱ Ἲ Ἳ Ἴ Ἵ Ἶ Ἷ ὶ ί ῐ ῑ ῒ ΐ ῖ ῗ Ῐ Ῑ Ὶ Ί 
+KAPPA      20    Κ κ 
+LAMDA      30    Λ λ 
+MU         40    Μ μ 
+NU         50    Ν ν 
+XI         60    Ξ ξ 
+OMICRON    70    Ό Ο ο ό ὀ ὁ ὂ ὃ ὄ ὅ Ὀ Ὁ Ὂ Ὃ Ὄ Ὅ ὸ ό Ὸ Ό 
+PI         80    Π π 
+RHO        100   Ρ ρ ῤ ῥ Ῥ 
+SIGMA      200   Σ ς σ 
+TAU        300   Τ τ 
+UPSILON    400   Ύ Υ Ϋ ΰ υ ϋ ύ ὐ ὑ ὒ ὓ ὔ ὕ ὖ ὗ Ὑ Ὓ Ὕ Ὗ ὺ ύ ῠ ῡ ῢ ΰ ῦ ῧ Ῠ Ῡ Ὺ Ύ 
+PHI        500   Φ φ 
+CHI        600   Χ χ 
+PSI        700   Ψ ψ 
+OMEGA      800   Ώ Ω ω ώ ὠ ὡ ὢ ὣ ὤ ὥ ὦ ὧ Ὠ Ὡ Ὢ Ὣ Ὤ Ὥ Ὦ Ὧ ὼ ώ ᾠ ᾡ ᾢ ᾣ ᾤ ᾥ ᾦ ᾧ ᾨ ᾩ ᾪ ᾫ ᾬ ᾭ ᾮ ᾯ ῲ ῳ ῴ ῶ ῷ Ὼ Ώ ῼ 

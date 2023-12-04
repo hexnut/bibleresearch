@@ -8,4 +8,4 @@ seq 100 999 | ./narcgen.py | grep "^[0-9]* \[[0-9]\{3\}\]" | tee $tfile
 echo
 
 echo "Three digit narcissistic numbers:"
-cat $tfile | cut -d' ' -f 2 | sort | uniq -c | awk '{ print $2, $1}'
+cat $tfile | cut -d' ' -f 2 | grep -Eo '[0-9]+' | sort | uniq -c | awk '{ print $2":", $1}'
