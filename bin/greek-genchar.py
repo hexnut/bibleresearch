@@ -1,22 +1,25 @@
 #!/usr/bin/python3
 
-import os,re,sys,unicodedata
+import os
+import re
+import sys
+import unicodedata
 
 def find_unicode_chars(u_name, start, stop):
     # Print the unicode values that match a name
     u_list = []
 
-    for x in range(start,stop):
+    for x in range(start, stop):
         c = chr(x)
         try:
             un = unicodedata.name(c)
             if un.find('LETTER ' + u_name) > 0 or un.find('LETTER FINAL ' + u_name) > 0:
                 u_list.append(c)
-                #print(un)
+                # print(un)
         except ValueError:
             continue
 
-    return(u_list)
+    return u_list
 
 def gen_greek_chartable(fp):
 
@@ -32,17 +35,16 @@ def gen_greek_chartable(fp):
     out_f = open(of_name, "w")
 
     # Header line
-    out_f.write('GREEK CHARACTER SET\n')
+    out_f.write('# GREEK CHARACTER SET\n')
 
     # Loop to build our unicode table for greek chars
     for line in in_f:
-        m = re.match( r'(\w+)\s+(\d+)', line, flags=0)
+        m = re.match(r'(\w+)\s+(\d+)', line, flags=0)
         if m:
             char_name = m.group(1)
             char_val = m.group(2)
             l_main = find_unicode_chars(char_name, start1, stop1)
-            l_ext  = find_unicode_chars(char_name, start2, stop2)
-            ul = l_main + l_ext
+            l_ext = find_unicode_chars(char_name, start2, stop2)
 
             # Write a row to our output file
             o_line = '%-9s  %-5s ' % (char_name, char_val)
@@ -56,7 +58,8 @@ def gen_greek_chartable(fp):
     in_f.close()
     out_f.close()
 
-    return(o_cnt)
+    return o_cnt
+
 
 if __name__ == "__main__":
 
@@ -64,4 +67,4 @@ if __name__ == "__main__":
     f_count = gen_greek_chartable(fp)
     print('%d %s' % (f_count, 'output records written'))
 
-    exit()
+    sys.exit()

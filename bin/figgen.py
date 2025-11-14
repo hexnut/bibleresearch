@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 
-import os,sys
+import os
+import sys
 
-def draw_triangle(fp,rows):
+
+def draw_triangle(fp, rows):
     # Draw a triangle
     from PIL import Image, ImageDraw
 
     # Calculate canvas size based on 1000^2 = 40 rows
     cw = int((rows*1000)/40)
-    canvas = (cw,cw)
-    img = Image.new('RGB', (canvas[0], canvas[1]), color = (75, 100, 140))
+    canvas = (cw, cw)
+    img = Image.new('RGB', (canvas[0], canvas[1]), color=(75, 100, 140))
 
     # Draw a triangle of circles
     d = ImageDraw.Draw(img)
@@ -23,24 +25,25 @@ def draw_triangle(fp,rows):
     x2 = center[0] + (dsize/2)
     y1 = center[1] - (dsize/2)
     y2 = center[1] + (dsize/2)
-    d.ellipse([(x1,y1), (x2,y2)], fill=(255,255,0))
+    d.ellipse([(x1, y1), (x2, y2)], fill=(255, 255, 0))
 
     dcount = 2
     # Additional rows
-    for n in range(2,rows+1):
+    for n in range(2, rows+1):
         y1 += dsize
         y2 += dsize
         x1 = center[0] - (dsize/2) * n
         x2 = x1 + dsize
-        d.ellipse([(x1,y1), (x2,y2)], fill=(255,255,0))
+        d.ellipse([(x1, y1), (x2, y2)], fill=(255, 255, 0))
         dcount += 1
         # Generate the rest of the row
-        for m in range(2,dcount):
+        for m in range(2, dcount):
             x1 += dsize
             x2 += dsize
-            d.ellipse([(x1,y1), (x2,y2)], fill=(255,255,0))
+            d.ellipse([(x1, y1), (x2, y2)], fill=(255, 255, 0))
 
-    img.save("%s/%s" % (fp,"figure.png"))
+    img.save("%s/%s" % (fp, "figure.png"))
+
 
 if __name__ == "__main__":
 
@@ -49,8 +52,8 @@ if __name__ == "__main__":
     else:
         T = 40
 
-    base=os.path.expanduser('~') + "/Sync/Research/"
+    base = os.path.expanduser('~') + "/Sync/Research/"
     fp = base + "images"
-    draw_triangle(fp,T)
+    draw_triangle(fp, T)
 
-exit()
+sys.exit()

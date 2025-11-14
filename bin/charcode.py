@@ -1,20 +1,19 @@
 #!/usr/bin/python3
-#
-# Read input from stdin and echo the unicode name of each character
-#
+"""Read from stdin and echo the unicode name of each character"""
 
-import os,sys,unicodedata
+import sys
+import unicodedata
 
 if __name__ == "__main__":
 
     if len(sys.argv) != 1:
         print("Usage: (echo|cat *) | %s" % sys.argv[0])
-        exit()
+        sys.exit()
 
     for line in sys.stdin:
-        for i in range(len(line)):
-            c = line[i]
-            if (c == '\n'): continue
-            print(c,':',unicodedata.name(c))
+        for i, char in enumerate(line):
+            if char == '\n':
+                continue
+            print(char, ':', unicodedata.name(char))
 
-    exit()
+    sys.exit()

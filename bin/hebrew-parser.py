@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 
-import os,re,sys,unicodedata,getopt
+import getopt
+import os
+import sys
+
 
 def import_alphabet(fn):       
-    # Initialize our list of tuples data structure            
+    # Initialize our list of tuples data structure
     h_list = []
     linecnt = 0
 
-    # Open the file containing our table values     
+    # Open the file containing our table values
     f = open(fn, "r")
 
     # Create a list of tuples containing our table of characters
@@ -23,7 +26,7 @@ def import_alphabet(fn):
 
     # Clean up and return
     f.close()
-    return(h_list)
+    return h_list 
 
 def numeric_lookup(h_table, c):             
     oda = 0
@@ -33,13 +36,11 @@ def numeric_lookup(h_table, c):
         if c in li:
             oda = int(li[0])
             val = int(li[2])
-            break;
+            break
 
-    return(oda,val)
+    return (oda, val)
 
 def parse_chars(h_table):
-    # Init local vars
-    (gw, lc, wc) = ('', 0, 0)
 
     # Parse a text character by character via stdin
     for line in sys.stdin:
@@ -48,22 +49,18 @@ def parse_chars(h_table):
             continue
 
         wordlist = line.split()
-        wc = len(wordlist)
-
         for word in wordlist:
             for c in word:
-                (o,v) = numeric_lookup(h_table, c)
-                if v==0:
+                (o, v) = numeric_lookup(h_table, c)
+                if v == 0:
                     continue
-                if arg_o:
-                    print("%d " % (o), end="")
-                else:
-                    print("%d " % (v), end="")
+                print("%d " % (v), end="")
             print()
 
-    return()
+    return ()
 
-def parse_words(ht,arg_n,arg_o):
+def parse_words(ht, arg_n, arg_o):
+
     # Init local vars
     (w_sum, wo_sum, l_sum, o_sum, lc, wc) = (0, 0, 0, 0, 0, 0)
 
@@ -78,7 +75,7 @@ def parse_words(ht,arg_n,arg_o):
 
         for word in wordlist:
             for c in word:
-                (o,v) = numeric_lookup(ht, c)
+                (o, v) = numeric_lookup(ht, c)
                 if v == 0:
                     continue
                 lc += 1
@@ -92,26 +89,27 @@ def parse_words(ht,arg_n,arg_o):
                 else:
                     print("%-10d %s" % (wo_sum, word))
             else:
-               if arg_n:
+                if arg_n:
                     print("%d" % (w_sum))
-               else:
+                else:
                     print("%-10d %s" % (w_sum, word))
-            (w_sum,wo_sum) = (0,0)
+            (w_sum, wo_sum) = (0, 0)
 
-        return(wc,lc,l_sum,o_sum)
+        return (wc, lc, l_sum, o_sum)
+
 
 if __name__ == "__main__":
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:],"hnol")
+        opts, args = getopt.getopt(sys.argv[1:], "hnol")
     except getopt.GetoptError as err:
-        print (err)
+        print(err)
         sys.exit(2)
 
     (arg_n, arg_o, arg_l) = (False, False, False)
     for opt, arg in opts:
         if opt == "-h":
-            print ('usage: hebrew-parser.py [-hnol]')
+            print('usage: hebrew-parser.py [-hnol]')
             print('\t-h help')
             print('\t-n numeric output only')
             print('\t-o calculate ordinal values')
@@ -129,16 +127,16 @@ if __name__ == "__main__":
     fn = base + "hebrew-alephbet.csv"
     ht = import_alphabet(fn)
 
-    if arg_l == True:
+    if arg_l is True:
         # Parse hebrew chars from stdin
         parse_chars(ht)
     else:
         # Parse hebrew words from stdin
-        (wc,lc,l_sum,o_sum) = parse_words(ht,arg_n,arg_o)
-        if arg_n == False:
+        (wc, lc, l_sum, o_sum) = parse_words(ht, arg_n, arg_o)
+        if arg_n is False:
             if arg_o:
-                print('Text contains',wc,'words and',lc,'letters for an ordinal value of',o_sum)
+                print('Text contains', wc, 'words and', lc, 'letters for an ordinal value of', o_sum)
             else:
-                print('Text contains',wc,'words and',lc,'letters for a total value of',l_sum)
+                print('Text contains', wc, 'words and', lc, 'letters for a total value of', l_sum)
 
     exit()

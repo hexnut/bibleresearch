@@ -1,14 +1,16 @@
 #!/usr/bin/python3
+"""Docstring"""
 
 import sys
 import math
 
 def prime_factorize(n):
+    """Docstring"""
     factors = []
     number = math.fabs(n)
 
     if number == 1:
-        return("1")
+        return "1"
 
     while number > 1:
         factor = get_next_prime_factor(number)
@@ -23,6 +25,7 @@ def prime_factorize(n):
     return s
 
 def get_next_prime_factor(n):
+    """Docstring"""
     if n % 2 == 0:
         return 2
 
@@ -32,6 +35,7 @@ def get_next_prime_factor(n):
             return x
 
     return int(n)
+
 
 if __name__ == "__main__":
     s_arg = 0
@@ -46,13 +50,12 @@ if __name__ == "__main__":
         print("%s" % prime_factorize(n))
     elif len(sys.argv) == 2 and s_arg == 0:
         n = int(sys.argv[1])
-        print("%d: %s" % (n,prime_factorize(n)))
+        print("%d: %s" % (n, prime_factorize(n)))
     else:
         for line in sys.stdin:
             for n in line.split():
                 n = int(n)
-                if (s_arg):
+                if s_arg:
                     print("%s" % prime_factorize(n))
                 else:
-                    print("%d: %s" % (n,prime_factorize(n)))
-
+                    print("%d: %s" % (n, prime_factorize(n)))

@@ -2,9 +2,9 @@
 
 import sys
 
-arg_o  = 'Simple hexagons'
+arg_o = 'Simple hexagons'
 arg_co = 'Centered hexagons'
-arg_a  = 'Simple hexagrams'
+arg_a = 'Simple hexagrams'
 arg_ca = 'Centered hexagrams'
 
 if len(sys.argv) != 2:
@@ -13,32 +13,32 @@ if len(sys.argv) != 2:
     print(' -co:', arg_co)
     print(' -a: ', arg_a)
     print(' -ca:', arg_ca)
-    exit()
+    sys.exit()
 
 s = sys.argv[1]
 # Use the cmd line arg to define a figurate function
 if s == "-o":
     print(arg_o)
-    f = 'int((2*n * (2*n - 1)) / 2)'
+    F = 'int((2*N * (2*N - 1)) / 2)'
 elif s == "-co":
     print(arg_co)
-    f = 'int(1 + 6 * (0.5*n * (n - 1)))'
+    F = 'int(1 + 6 * (0.5*N * (N - 1)))'
 elif s == "-a":
     print(arg_a)
-    f = 'int((12 * (n-1)))'
+    F = 'int((12 * (N-1)))'
 elif s == "-ca":
     print(arg_ca)
-    f = 'int((6*n * (n-1) + 1))'
-else :
-    f = None
+    F = 'int((6*N * (N-1) + 1))'
+else:
+    F = None
 
-if (f is None):
-    exit()
+if F is None:
+    sys.exit()
 
-r = 0
+R = 0
 for line in sys.stdin:
-    n = int(line)
-    r = eval(f)
-    print("%3d:%5d" % (n,r)) 
+    N = int(line)
+    R = eval(F)
+    print("%3d:%5d" % (N, R))
 
-exit()
+sys.exit()

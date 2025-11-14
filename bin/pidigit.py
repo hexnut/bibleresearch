@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 # Find PI to the Nth Digit
 
 import sys
@@ -15,52 +16,50 @@ def calcPi(limit):  # Generator function
     counter = 0
 
     while counter != decimal + 1:
-            if 4 * q + r - t < n * t:
-                    # yield digit
-                    yield n
-                    # insert period after first digit
-                    if counter == 0:
-                            yield '.'
-                    # end
-                    if decimal == counter:
-                            print('')
-                            break
-                    counter += 1
-                    nr = 10 * (r - n * t)
-                    n = ((10 * (3 * q + r)) // t) - 10 * n
-                    q *= 10
-                    r = nr
-            else:
-                    nr = (2 * q + r) * l
-                    nn = (q * (7 * k) + 2 + (r * l)) // (t * l)
-                    q *= k
-                    t *= l
-                    l += 2
-                    k += 1
-                    n = nn
-                    r = nr
+        if 4 * q + r - t < n * t:
+            # yield digit
+            yield n
+            # insert period after first digit
+            if counter == 0:
+                yield '.'
+            # end
+            if decimal == counter:
+                print('')
+                break
+            counter += 1
+            nr = 10 * (r - n * t)
+            n = ((10 * (3 * q + r)) // t) - 10 * n
+            q *= 10
+            r = nr
+        else:
+            nr = (2 * q + r) * l
+            nn = (q * (7 * k) + 2 + (r * l)) // (t * l)
+            q *= k
+            t *= l
+            l += 2
+            k += 1
+            n = nn
+            r = nr
+
 
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
         print("Usage: %s <integer>" % sys.argv[0])
-        exit()
+        sys.exit()
 
-    l_flag=0
+    L_FLAG = 0
     if sys.argv[1] == "-l":
-        l_flag = 1
+        L_FLAG = 1
         n = int(sys.argv[2])
     else:
         n = int(sys.argv[1])
 
-    # Calls CalcPi with the given limit
-    pi_digits = calcPi(n)
-    i = 0
-
     # Prints the output of calcPi generator function
     l_pos = 1
-    for d in pi_digits:
-        if (l_flag):
+    # for d in pi_digits:
+    for d in calcPi(n):
+        if L_FLAG:
             if l_pos < n + 2:
                 print(d)
             else:
@@ -68,3 +67,5 @@ if __name__ == '__main__':
             l_pos += 1
         else:
             print(d, end='')
+
+    sys.exit()

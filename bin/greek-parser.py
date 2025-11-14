@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-import os,re,sys,unicodedata,getopt
+import os
+import sys
+import unicodedata
+import getopt
 
 def import_alphabet(fn):
     # Initialize our list of tuples data structure
@@ -23,7 +26,7 @@ def import_alphabet(fn):
 
     # Clean up and return
     f.close()
-    return(g_list)
+    return g_list
 
 def numeric_lookup(g_table, c):
     oda = 0
@@ -33,30 +36,28 @@ def numeric_lookup(g_table, c):
         if c in li:
             oda = int(li[0])
             val = int(li[2])
-            break;
+            break
 
-    return(oda,val)
+    return (oda, val)
 
 def parse_chars(g_table):
     # Init local vars
-    (gw, lc, wc) = ('', 0, 0)
+    lc = 0
 
     # Parse a text character by character via stdin
     for line in sys.stdin:
         if line[0] == "#":
-            #print(line, end='')
+            # print(line, end='')
             continue
 
         wordlist = line.split()
-        wc = len(wordlist)
-
         for word in wordlist:
             for c in word:
-                (o,v) = numeric_lookup(g_table, c)
+                (o, v) = numeric_lookup(g_table, c)
                 # Iota subscript adjustment
                 try:
                     un = unicodedata.name(c)
-                    if (un.find('YPOGEGRAMMENI') > 0):
+                    if un.find('YPOGEGRAMMENI') > 0:
                         lc += 1
                         o += 9
                         print("10 ", end="")
@@ -65,16 +66,16 @@ def parse_chars(g_table):
                 print("%d " % (v), end="")
             print()
 
-    return()
+    return ()
 
-def parse_words(g_table,arg_o,arg_n):
+def parse_words(g_table, arg_o, arg_n):
     # Init local vars
     (w_sum, wo_sum, l_sum, o_sum, lc, wc) = (0, 0, 0, 0, 0, 0)
 
     # Parse a text character by character via stdin
     for line in sys.stdin:
         if line[0] == "#":
-            #print(line, end='')
+            # print(line, end='')
             continue
 
         wordlist = line.split()
@@ -82,11 +83,11 @@ def parse_words(g_table,arg_o,arg_n):
 
         for word in wordlist:
             for c in word:
-                (o,v) = numeric_lookup(g_table, c)
+                (o, v) = numeric_lookup(g_table, c)
                 # Iota subscript adjustment
                 try:
                     un = unicodedata.name(c)
-                    if (un.find('YPOGEGRAMMENI') > 0):
+                    if un.find('YPOGEGRAMMENI') > 0:
                         lc += 1
                         o += 9
                         v += 10
@@ -108,22 +109,23 @@ def parse_words(g_table,arg_o,arg_n):
                     print("%d" % (w_sum))
                 else:
                     print("%-12s%7d" % (word, w_sum))
-            (w_sum,wo_sum) = (0,0)
+            (w_sum, wo_sum) = (0, 0)
 
-    return(lc, wc, l_sum, o_sum)
+    return (lc, wc, l_sum, o_sum)
+
 
 if __name__ == "__main__":
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:],"hnol")
+        opts, args = getopt.getopt(sys.argv[1:], "hnol")
     except getopt.GetoptError as err:
-        print (err)
+        print(err)
         sys.exit(2)
 
     (arg_n, arg_o, arg_l) = (False, False, False)
     for opt, arg in opts:
         if opt == "-h":
-            print ('usage: greek-parser.py [-hnol]')
+            print('usage: greek-parser.py [-hnol]')
             print('\t-h help')
             print('\t-n numeric output only')
             print('\t-o calculate ordinal values')
@@ -141,13 +143,13 @@ if __name__ == "__main__":
     fn = base + "greek-alphabet.csv"
     g_table = import_alphabet(fn)
 
-    if arg_l == True:
-        # Parse hebrew chars from stdin
+    if arg_l is True:
+        # Parse greek chars from stdin
         parse_chars(g_table)
     else:
-        # Parse hebrew words from stdin
-        (l_cnt, w_cnt, t_sum, o_sum) = parse_words(g_table,arg_o,arg_n)
-        if arg_n == False:
+        # Parse greek words from stdin
+        (l_cnt, w_cnt, t_sum, o_sum) = parse_words(g_table, arg_o, arg_n)
+        if arg_n is False:
             if arg_o:
                 print('Text contains %d words and %d letters for an ordinal value of %d' % (w_cnt, l_cnt, o_sum))
             else:
