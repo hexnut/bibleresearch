@@ -22,16 +22,13 @@ def semiprime(num):
     return cnt == 2
 
 
-spl = []
-
-# Main loop to find semiprimes
+# Find semiprimes and print them
+i = 0
 print("Semi-prime numbers")
 for line in sys.stdin:
-    i = int(line)
-    if semiprime(i) is True:
-        spl.append(i)
+    i += 1
+    sp = int(line)
+    if semiprime(sp) is True:
+        print("%3d: %3d" % ((i+1), sp))
 
-# Print a formatted list
-for i in range(0, len(spl)):
-    p = spl[i]
-    print("%3d: %3d" % ((i+1), p))
+sys.exit()
