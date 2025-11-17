@@ -26,9 +26,9 @@ def semiprime(num):
 i = 0
 print("Semi-prime numbers")
 for line in sys.stdin:
-    i += 1
     sp = int(line)
     if semiprime(sp) is True:
-        print("%3d: %3d" % ((i+1), sp))
+        i += 1
+        print("%3d: %3d" % (i, sp))
 
 sys.exit()
